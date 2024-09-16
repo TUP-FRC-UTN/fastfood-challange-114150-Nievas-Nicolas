@@ -1,0 +1,14 @@
+<form class="row g-3 " #form="ngForm" (ngSubmit)="sendFoot(form)">
+    <h3>Component Point of Sell - POS</h3>
+    <div class="">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="pedidoTomado.nombre" required>
+    </div>
+    <div class="">
+        <label for="pedido" class="form-label">pedido</label>
+        <input type="text" class="form-control" id="pedido" name="pedido" [(ngModel)]="pedidoTomado.descripcion" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+<div>
+  <h1>Restaurante FastFood</h1>
+  <h3>
+    Pedidos Ingresados
+  </h3>
+  <tbody>
+    @for (item of ltsFoot; track $index) {
+      <strong>Nombre:</strong> {{item.nombre}},
+      <strong>Descripción:</strong> {{item.descripcion}},
+      <strong>Número:</strong> {{item.numero}}   |
+    }
+  </tbody>
+  
+  <div>
+    <h3>pedidos listos para entregar</h3> 
+  </div>
+
+  <app-pos></app-pos>
+  @if (ltsFoot.length > 0) {
+    <app-kitchen></app-kitchen>
+  }
+
+</div>

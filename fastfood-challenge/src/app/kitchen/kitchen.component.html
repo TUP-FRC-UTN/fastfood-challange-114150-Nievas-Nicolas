@@ -1,0 +1,22 @@
+<div>
+  <h3>Component Kitchen</h3>
+  <div>
+    <h3>Pendiente</h3>
+    <tbody>
+      @for (item of ltsFoot; track $index) {
+      <td>
+        <li>
+          ({{ item.numero }}) - {{ item.descripcion }}
+          <button (click)="cocinar(foot)" [disabled]="btnStatus">
+            cocinar
+          </button>
+        </li>
+      </td>
+      }
+    </tbody>
+  </div>
+  <div>
+    <h4>Pedidos en coccion</h4>
+    <li>({{foot.numero}}) - {{foot.nombre}} - {{foot.descripcion}} </li>
+  </div>
+</div>
