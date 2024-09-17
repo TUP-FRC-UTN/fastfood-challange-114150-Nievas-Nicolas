@@ -1,0 +1,7 @@
+<ul>
+    @for (item of ltsRedyFood; track $index) {
+      <li>
+        {{ item.numero }} - {{ item.descripcion }} <button (click)="entregarPedido()">Entregar!</button>
+      </li>
+    }
+  </ul>

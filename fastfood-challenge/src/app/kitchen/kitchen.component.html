@@ -1,22 +1,23 @@
 <div>
   <h3>Component Kitchen</h3>
   <div>
-    <h3>Pendiente</h3>
-    <tbody>
-      @for (item of ltsFoot; track $index) {
-      <td>
-        <li>
-          ({{ item.numero }}) - {{ item.descripcion }}
-          <button (click)="cocinar(foot)" [disabled]="btnStatus">
-            cocinar
-          </button>
-        </li>
-      </td>
-      }
-    </tbody>
+    <h3>Pendiente de Cocinar</h3>
+      <ul>
+        @for (item of ltsFood; track $index) {
+            <li>
+              ({{ item.numero }}) - {{ item.descripcion }}
+              <button (click)="cocinar($index)" [disabled]="btnStatus">
+                cocinar
+              </button>
+            </li>
+          }
+      </ul>
   </div>
-  <div>
-    <h4>Pedidos en coccion</h4>
-    <li>({{foot.numero}}) - {{foot.nombre}} - {{foot.descripcion}} </li>
-  </div>
+  @if (pedido.numero) {
+    <div>
+      <h3>Pedidos en cocción</h3>
+      <li>({{pedido.numero}}) {{pedido.nombre}} - {{pedido.descripcion}} </li> <br>
+      <button (click)="pedidoTerminado()">Pedido Terminado!</button>
+    </div>
+  }
 </div>

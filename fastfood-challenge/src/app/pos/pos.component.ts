@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RestService } from '../services/rest.service';
-import { Foot } from '../models/foot';
+import { RestService } from '../../services/rest.service';
+import { Food } from '../../models/food';
 
 @Component({
   selector: 'app-pos',
@@ -14,16 +14,16 @@ import { Foot } from '../models/foot';
 export class PosComponent {
   private restService = inject(RestService);
 
-  pedidoTomado: Foot = new Foot();
+  pedidoTomado: Food = new Food();
 
 
   sendFoot(form: NgForm) {
     if(form.valid){
       this.pedidoTomado.numero = Math.floor(Math.random() * 1000);
-      this.restService.sendFoot(this.pedidoTomado);
-      this.pedidoTomado = new Foot();
+      this.restService.sendFood(this.pedidoTomado);
       console.log(this.pedidoTomado);
-      console.log(this.restService.getFoot());
+      this.pedidoTomado = new Food();
+      console.log(this.restService.getFood());
     } else{
       alert("Formulario no valido");
       console.log("Formulario no valido", this.pedidoTomado);

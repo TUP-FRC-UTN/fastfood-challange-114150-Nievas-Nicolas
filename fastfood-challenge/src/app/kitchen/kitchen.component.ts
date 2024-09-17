@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Foot } from '../models/foot';
-import { RestService } from '../services/rest.service';
+import { Food } from '../../models/food';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -12,23 +12,33 @@ import { RestService } from '../services/rest.service';
 export class KitchenComponent {
   private restService = inject(RestService);
 
-  ltsFoot: Foot[] = [];
+  ltsFood: Food[] = [];
   btnStatus: boolean = false;
-  foot: Foot = new Foot();
+  pedido: Food = new Food();
 
   ngOnInit(): void {
     this.showOrders();
   }
 
   showOrders(){
-    this.ltsFoot = this.restService.getFoot();
+    this.ltsFood = this.restService.getFood();
   }
 
-  cocinar(foot: Foot){
-    if(!this.ltsFoot){
-      this.ltsFoot = [];
-    
-      this.btnStatus = true;
+  cocinar(index: number){
+    this.pedido = this.ltsFood[index];
+    console.log('pedido a cocinar',this.pedido);
+    this.ltsFood.splice(index, 1);
+    this.btnStatus = true;
+  }
+
+  pedidoTerminado() {
+    if(this.pedido.numero){
+      this.restService.sendReadyFood(this.pedido);
+      console.log('pedido terminado',this.pedido);
+      this.pedido = new Food();
+      this.btnStatus = false;
+    } else{
+      alert('No hay pedido para entregar');
     }
   }
 }

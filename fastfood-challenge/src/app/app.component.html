@@ -4,7 +4,7 @@
     Pedidos Ingresados
   </h3>
   <tbody>
-    @for (item of ltsFoot; track $index) {
+    @for (item of ltsFood; track $index) {
       <strong>Nombre:</strong> {{item.nombre}},
       <strong>Descripción:</strong> {{item.descripcion}},
       <strong>Número:</strong> {{item.numero}}   |
@@ -13,11 +13,11 @@
   
   <div>
     <h3>pedidos listos para entregar</h3> 
+    <app-delivery-point></app-delivery-point>
   </div>
 
   <app-pos></app-pos>
-  @if (ltsFoot.length > 0) {
-    <app-kitchen></app-kitchen>
-  }
+  <app-kitchen></app-kitchen>
+  
 
 </div>

@@ -1,20 +1,21 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PosComponent } from './pos/pos.component';
-import { RestService } from './services/rest.service';
-import { Foot } from './models/foot';
+import { RestService } from '../services/rest.service';
+import { Food } from '../models/food';
 import { KitchenComponent } from "./kitchen/kitchen.component";
+import { DeliveryPointComponent } from "./delivery-point/delivery-point.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PosComponent, KitchenComponent],
+  imports: [RouterOutlet, PosComponent, KitchenComponent, DeliveryPointComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
   title = 'fastfood-challenge';
-  ltsFoot: Foot[] = [];
+  ltsFood: Food[] = [];
 
   private restService = inject(RestService);
 
@@ -23,6 +24,6 @@ export class AppComponent implements OnInit{
   }
 
   showOrders(){
-    this.ltsFoot = this.restService.getFoot();
+    this.ltsFood = this.restService.getFood();
   }
 }
